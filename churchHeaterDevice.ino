@@ -18,7 +18,7 @@
 // MQTT_SOCKET_TIMEOUT: socket timeout interval in Seconds
 #define MQTT_SOCKET_TIMEOUT 60
 
-//#define SMS_TARGET  "+447885471792"
+#define SMS_TARGET  "+447885471792"
 //#define SMS_TARGET2  "+447506021935"
 //#define SMS_TARGET  "+447803853836"
 //#define SMS_TARGET2 "+447967920350"
@@ -107,7 +107,7 @@ void loop() {
       publishMessage(heaterduration);
       lastMessageSent = millis();
       if ( heaterduration > 6.5) {
-        sendText(heaterduration)
+        sendText(heaterduration);
       }
     }
 }
