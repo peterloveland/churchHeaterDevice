@@ -9,11 +9,11 @@
 // Set serial for debug console (to the Serial Monitor, default speed 115200)
 #define SerialMon Serial
 //
-#define printLine(a) (SerialMon.println(a));
-#define printString(a) (SerialMon.print(a));
+//#define printLine(a) (SerialMon.println(a));
+//#define printString(a) (SerialMon.print(a));
 
-//#define printLine(a) // UNCOMMENT TO DISABLE SERIAL
-//#define printString(a) // UNCOMMENT TO DISABLE SERIAL
+#define printLine(a) // UNCOMMENT TO DISABLE SERIAL
+#define printString(a) // UNCOMMENT TO DISABLE SERIAL
 
 // MQTT_SOCKET_TIMEOUT: socket timeout interval in Seconds
 #define MQTT_SOCKET_TIMEOUT 60
@@ -58,7 +58,7 @@ const long hour = 3600000ul; // 3600000ul milliseconds in an hour
 
 #define INTERVAL_1 (2 * hour)      // 2.0 hours
 #define INTERVAL_2 (2.5 * hour)     // 2.5 hours
-#define INTERVAL_3 (hour * 0.5) // then every hour
+#define INTERVAL_3 hour // then every hour
 
 int messageStatus = 0;
 unsigned long lastMessageSent;
@@ -200,7 +200,7 @@ boolean publishMessage(float duration) {
   if ( isModemConnected() ) {
     messageReceived = false;
     if (!connectToMQTT()) {
-        Serial.print(F("Connect to MQTT failed, send a text instead "));
+        printLine(F("Connect to MQTT failed, send a text instead"));
         sendText(duration);
         return true;
     } else {
