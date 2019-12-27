@@ -9,19 +9,19 @@
 // Set serial for debug console (to the Serial Monitor, default speed 115200)
 #define SerialMon Serial
 //
-//#define printLine(a) (SerialMon.println(a));
-//#define printString(a) (SerialMon.print(a));
+#define printLine(a) (SerialMon.println(a));
+#define printString(a) (SerialMon.print(a));
 
-#define printLine(a) // UNCOMMENT TO DISABLE SERIAL
-#define printString(a) // UNCOMMENT TO DISABLE SERIAL
+//#define printLine(a) // UNCOMMENT TO DISABLE SERIAL
+//#define printString(a) // UNCOMMENT TO DISABLE SERIAL
 
 // MQTT_SOCKET_TIMEOUT: socket timeout interval in Seconds
 #define MQTT_SOCKET_TIMEOUT 60
 
-#define SMS_TARGET  "+447885471792"
+//#define SMS_TARGET  "+447885471792"
 //#define SMS_TARGET2  "+447506021935"
-//#define SMS_TARGET  "+447803853836"
-//#define SMS_TARGET2 "+447967920350"
+#define SMS_TARGET  "+447803853836"
+#define SMS_TARGET2 "+447967920350"
 
 // or Software Serial on Uno, Nano
 #include <SoftwareSerial.h>
@@ -32,7 +32,8 @@ const char user[] = "";
 const char pass[] = "";
 
 // MQTT details
-const char* broker = "iot.eclipse.org";
+//const char* broker = "iot.eclipse.org";
+const char* broker = "test.mosquitto.org";
 const char* topicDuration = "churchheater/duration";
 const char* topicStatus = "churchheater/status";
 const char* topicSignal = "churchheater/signal";
@@ -56,8 +57,8 @@ long lastPublishAttempt = 0;
 
 const long hour = 3600000ul; // 3600000ul milliseconds in an hour
 
-#define INTERVAL_1 (2 * hour)      // 2.0 hours
-#define INTERVAL_2 (2.5 * hour)     // 2.5 hours
+#define INTERVAL_1 (3 * hour)      // 3.0 hours
+#define INTERVAL_2 (3.5 * hour)     // 3.5 hours
 #define INTERVAL_3 hour // then every hour
 
 int messageStatus = 0;
@@ -91,13 +92,13 @@ void setup() {
 void loop() {
   
     if ( messageStatus == 0 && millis() >= INTERVAL_1 ){
-      heaterduration = 2;
+      heaterduration = 3;
       publishMessage(heaterduration); 
       lastMessageSent = millis(); 
       messageStatus = 1;
     }
     if ( messageStatus == 1 && millis() >= INTERVAL_2 ){
-      heaterduration = 2.5;
+      heaterduration = 3.5;
       publishMessage(heaterduration); 
       lastMessageSent = millis();
       messageStatus = 2;
