@@ -1,11 +1,14 @@
 # Peter's quick start
 
+[Rshell](https://www.coderdojotc.org/micropython/advanced-labs/11-rshell/)
+
+
 1. Need to hold bootsel and plug pico in
 2. Then copy the flash_nuke.uf2 file onto the disk. This will eject the disk when copied
-2. Then copy the Raspberry Pi Pico v1.21.0.uf2 file onto the disk. This will eject the disk when copied
-3. Now run rshell -p /dev/cu.usbmodem21401 --buffer-size 512 (port may have changed run `rshell --list` to find it)
-4. Type exit
-4. run `ampy --port /dev/tty.usbmodem21401 put main.py`
+3. Then copy the Raspberry Pi Pico v1.21.0.uf2 file onto the disk. This will eject the disk when copied
+4. Now run `rshell -p /dev/cu.usbmodem21401 --buffer-size 512` (port may have changed run `rshell --list` to find it)
+5. Type exit
+6. run `ampy --port /dev/tty.usbmodem21401 put main.py`
 
 # Tutorial
 

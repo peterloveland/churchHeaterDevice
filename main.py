@@ -3,8 +3,8 @@ from time import sleep, time
 import machine
 import urequests
 
-ssid = 'Loveland'
-password = 'idontknowthewificode'
+ssid = 'abc'
+password = '123'
 
 # Function to connect to WiFi
 def connect():
